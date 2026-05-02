@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelulusan SMAN 1 Tanggul 2025/2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 300px, #f3f4f6 300px);
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .animate-bounce-short {
+            animation: bounce 0.5s ease-in-out 1;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+
+    <!-- Header Section -->
+    <header class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center text-white">
+         <div class="flex items-center gap-3">
+            <img src="https://drive.google.com/uc?export=view&id=1NkjkTnfR10uMfDOvZ3KrqcnXJvLgIvVZ" alt="Logo SMAN 1 Tanggul" class="w-12 h-12 bg-white rounded-full p-1" onerror="this.src='https://via.placeholder.com/50?text=Logo'">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold leading-none">SMAN 1 TANGGUL</h1>
+                <p class="text-xs md:text-sm italic opacity-90">Disiplin, Peduli, Berakhlak Mulia</p>
+            </div>
+        </div>
+        <div class="hidden md:block">
+            <div class="border-2 border-yellow-400 rounded-lg p-1 px-3 text-center">
+                <p class="text-[10px] font-bold">TERAKREDITASI</p>
+                <p class="text-2xl font-bold text-yellow-400">A</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 pb-12">
+        <!-- Hero Title -->
+        <div class="text-center text-white mb-8">
+            <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-2">CEK KELULUSAN</h2>
+            <p class="text-lg md:text-xl font-semibold text-yellow-300 uppercase">Tahun Pelajaran 2025/2026</p>
+            <div class="flex items-center justify-center gap-4 mt-4">
+                <div class="h-[1px] w-12 bg-white"></div>
+                <div class="rotate-45 w-2 h-2 border border-white"></div>
+                <div class="h-[1px] w-12 bg-white"></div>
+            </div>
+            <p class="mt-4 text-sm md:text-base max-w-lg mx-auto opacity-90">
+                Pengumuman kelulusan bersifat pribadi. <br> Masukkan NISN dan Password Anda untuk melihat hasil kelulusan.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Left Column: Form -->
+            <section class="space-y-6">
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100">
+                    <div class="bg-[#1e40af] text-white py-3 px-6 flex items-center gap-2 font-bold uppercase tracking-wider text-sm">
+                        <i class="fas fa-user-circle"></i> Form Cek Kelulusan
+                    </div>
+                    
+                    <div id="content-area" class="p-6 md:p-8">
+                        <!-- Countdown Timer Display -->
+                        <div id="countdown-wrapper" class="hidden mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+                            <p class="text-xs font-bold text-yellow-700 uppercase mb-1">Pengumuman Dibuka Dalam:</p>
+                            <div id="timer" class="text-2xl font-black text-yellow-800 tracking-widest">00:00:00:00</div>
+                        </div>
+
+                        <div id="login-form">
+                            <div class="mb-5">
+                                <label class="block text-xs font-bold text-gray-600 mb-2 uppercase">NISN</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <input type="text" id="nisn" class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all" placeholder="Masukkan NISN Anda">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-5">
+                                <label class="block text-xs font-bold text-gray-600 mb-2 uppercase">PASSWORD</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <input type="password" id="password" class="w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all" placeholder="Masukkan Password Anda">
+                                    <button onclick="togglePassword()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-blue-600">
+                                        <i id="eye-icon" class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                                <div class="flex gap-3">
+                                    <i class="fas fa-info-circle text-blue-500 mt-1"></i>
+                                    <div class="text-xs leading-relaxed">
+                                        <p class="font-bold text-blue-800 mb-1">Password :</p>
+                                        <p class="text-blue-700">Menggunakan Tanggal Lahir Anda dengan format: tahunbulanhari</p>
+                                        <p class="text-blue-600 italic">Contoh: Tanggal lahir 6 Agustus 2007 <br> Password: <span class="font-bold">20070806</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="checkStatus()" id="btn-submit" class="w-full bg-[#1e40af] hover:bg-blue-800 text-white font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                <i class="fas fa-search"></i> CEK KELULUSAN
+                            </button>
+                            
+                            <p class="text-[10px] text-center text-gray-400 mt-4">
+                                <i class="fas fa-shield-alt"></i> Data Anda aman dan hanya dapat diakses oleh Anda sendiri.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perhatian Section -->
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+                    <h3 class="flex items-center gap-2 font-bold text-yellow-600 mb-4 uppercase text-sm">
+                        <i class="fas fa-exclamation-triangle"></i> Perhatian
+                    </h3>
+                    <ol class="text-xs space-y-2 text-gray-600 list-decimal pl-4">
+                        <li>Pengumuman kelulusan bersifat pribadi.</li>
+                        <li>Dilarang memberikan informasi NISN dan Password kepada orang lain.</li>
+                        <li>Dilarang melakukan konvoi atau kegiatan yang melanggar hukum dan ketertiban.</li>
+                        <li>Rayakan kelulusan dengan cara yang positif dan membanggakan.</li>
+                    </ol>
+                    <div class="mt-6 flex justify-between items-end">
+                        <div class="text-[10px] font-bold text-blue-900 italic leading-tight">
+                            #SMAN1TANGGUL<br>BERSATU BERPRESTASI<br>MAJU BERSAMA
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Message -->
+            <section class="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100 h-fit">
+                <div class="bg-[#1e40af] text-white py-3 px-6 flex items-center gap-2 font-bold uppercase tracking-wider text-sm">
+                    <i class="fas fa-bullhorn"></i> Pesan Kepala Sekolah
+                </div>
+                <div class="p-8 text-center md:text-left">
+                    <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                        <img src="https://drive.google.com/thumbnail?id=1D_kguDxybznsQuaRygAPe5RiqTdms40z&sz=w400" alt="Foto Kepala Sekolah" class="w-32 h-40 object-cover rounded-lg border-4 border-gray-100 shadow-md">
+                        <div class="relative">
+                            <i class="fas fa-quote-left text-blue-100 text-5xl absolute -top-4 -left-4"></i>
+                            <div class="relative z-10 text-sm italic leading-relaxed text-gray-600 space-y-4">
+                                <p>Selamat kepada seluruh siswa kelas XII SMAN 1 Tanggul yang telah berhasil menyelesaikan pendidikan dengan baik.</p>
+                                <p>Teruslah belajar, berusaha, dan berdoa untuk meraih masa depan yang gemilang. Jadilah generasi yang berprestasi, berkarakter, dan bermanfaat bagi bangsa dan negara.</p>
+                                <p class="font-bold text-blue-900">Sukses selalu untuk kalian semua!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-col items-center md:items-end">
+                        <img src="https://drive.google.com/thumbnail?id=1clFcO8NkOJBgPqwseo2vqhY2ic5EdLp0&sz=w300" alt="Tanda Tangan" class="h-16 mb-2 opacity-80">
+                        <div class="text-right">
+                            <p class="font-bold text-blue-900">SISWO SURYONO, S.Pd., M.Pd.</p>
+                            <p class="text-xs text-gray-500">Kepala SMAN 1 Tanggul</p>
+                            <p class="text-[10px] text-gray-400">NIP. 19691125 199412 1 003</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a8a] text-white py-8 mt-auto border-t border-blue-400/30">
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="space-y-2 text-xs">
+                <div class="flex items-center gap-2"><i class="fas fa-globe"></i> sma1tanggul.sch.id</div>
+                <div class="flex items-center gap-2"><i class="fab fa-instagram"></i> @sman1tanggul_official</div>
+                <div class="flex items-center gap-2"><i class="fab fa-facebook-f"></i> SMAN 1 Tanggul</div>
+            </div>
+            <div class="text-right text-[10px] space-y-1">
+                <p>&copy; 2026 SMAN 1 Tanggul</p>
+                <p>Jl. Pemandian 16, Tanggul, Jember, Jawa Timur</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Backdrop -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full shadow-2xl animate-bounce-short">
+            <div id="modal-icon" class="text-4xl text-center mb-4"></div>
+            <h3 id="modal-title" class="text-lg font-bold text-center mb-2"></h3>
+            <p id="modal-message" class="text-sm text-gray-600 text-center mb-6"></p>
+            <button onclick="closeModal()" class="w-full bg-blue-600 text-white font-bold py-2 rounded-lg">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Scripting Logic -->
+    <script>
+        let targetDateTime = null;
+
+        window.onload = function() {
+            initSystem();
+        };
+
+        function initSystem() {
+            if (typeof google !== 'undefined') {
+                google.script.run
+                    .withSuccessHandler((config) => {
+                        if(config && config.targetDate) {
+                            targetDateTime = new Date(config.targetDate);
+                            startCountdown();
+                        }
+                    })
+                    .getSystemConfig();
+            }
+        }
+
+        function startCountdown() {
+            const timerEl = document.getElementById('timer');
+            const wrapper = document.getElementById('countdown-wrapper');
+            const btn = document.getElementById('btn-submit');
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDateTime.getTime() - now;
+
+                if (distance > 0) {
+                    wrapper.classList.remove('hidden');
+                    btn.disabled = true;
+                    
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    timerEl.innerHTML = 
+                        (days > 0 ? days + "h " : "") + 
+                        (hours < 10 ? "0"+hours : hours) + ":" + 
+                        (minutes < 10 ? "0"+minutes : minutes) + ":" + 
+                        (seconds < 10 ? "0"+seconds : seconds);
+                } else {
+                    clearInterval(x);
+                    wrapper.classList.add('hidden');
+                    btn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function togglePassword() {
+            const pwd = document.getElementById('password');
+            const icon = document.getElementById('eye-icon');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                pwd.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        function showModal(title, msg, type = 'info') {
+            const overlay = document.getElementById('modal-overlay');
+            const iconDiv = document.getElementById('modal-icon');
+            const titleEl = document.getElementById('modal-title');
+            const msgEl = document.getElementById('modal-message');
+
+            overlay.classList.remove('hidden');
+            titleEl.innerText = title;
+            msgEl.innerText = msg;
+
+            if(type === 'error') {
+                iconDiv.innerHTML = '⚠️';
+                iconDiv.className = 'text-5xl text-center mb-4 text-red-500';
+            } else if(type === 'locked') {
+                iconDiv.innerHTML = '🕒';
+                iconDiv.className = 'text-5xl text-center mb-4 text-yellow-500';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.add('hidden');
+        }
+
+        function checkStatus() {
+            const nisn = document.getElementById('nisn').value;
+            const pass = document.getElementById('password').value;
+            const btn = document.getElementById('btn-submit');
+
+            if(!nisn || !pass) {
+                showModal('Data Kurang', 'Silakan masukkan NISN dan Password terlebih dahulu.', 'error');
+                return;
+            }
+
+            // Validasi NISN minimal angka
+            if(isNaN(nisn)) {
+                showModal('Kesalahan Input', 'NISN harus berupa angka.', 'error');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sedang Memproses...';
+
+            if (typeof google !== 'undefined') {
+                google.script.run
+                    .withSuccessHandler((res) => {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-search"></i> CEK KELULUSAN';
+                        
+                        if(res && res.success) {
+                            renderSuccess(res);
+                        } else {
+                            if(res && res.code === 'TIME_LOCKED') {
+                                showModal('Belum Dibuka', `Pengumuman kelulusan belum dibuka. Silakan kembali pada ${res.time} WIB.`, 'locked');
+                            } else {
+                                showModal('Data Tidak Cocok', 'Maaf, NISN atau Password yang Anda masukkan tidak ditemukan dalam database.', 'error');
+                            }
+                        }
+                    })
+                    .withFailureHandler((err) => {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-search"></i> CEK KELULUSAN';
+                        showModal('Gangguan Server', 'Terjadi kesalahan pada sistem. Silakan coba beberapa saat lagi.', 'error');
+                    })
+                    .verifyLogin(nisn, pass);
+            } else {
+                // Simulasi offline
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-search"></i> CEK KELULUSAN';
+                    showModal('Info', 'Anda sedang berada di mode preview. Hubungkan dengan Google Apps Script untuk melihat hasil nyata.', 'info');
+                }, 1500);
+            }
+        }
+
+        function renderSuccess(data) {
+            const area = document.getElementById('content-area');
+            const isLulus = data.status.toLowerCase() === 'lulus';
+            
+            area.innerHTML = `
+                <div class="text-center animate-bounce-short">
+                    <div class="mb-4 text-5xl">🎉</div>
+                    <h2 class="text-2xl font-bold text-blue-900 mb-2">Selamat kepada: ${data.nama}!</h2>
+                    <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-6 text-left">
+                        <table class="w-full text-sm">
+                            <tr class="border-b border-blue-100"><td class="py-2 text-gray-500">Kelas</td><td class="py-2 font-bold">: ${data.kelas}</td></tr>
+                            <tr class="border-b border-blue-100"><td class="py-2 text-gray-500">Jurusan</td><td class="py-2 font-bold">: ${data.jurusan}</td></tr>
+                        </table>
+                    </div>
+                    <div class="py-4 px-6 rounded-lg ${isLulus ? 'bg-green-500 text-white shadow-green-200' : 'bg-red-500 text-white shadow-red-200'} font-black text-2xl mb-6 shadow-lg tracking-widest uppercase">
+                        ${data.status}
+                    </div>
+                    <p class="text-xs text-gray-500 mb-6 italic">"Masa depan adalah milik mereka yang percaya pada keindahan mimpi mereka."</p>
+                    <button onclick="location.reload()" class="w-full border-2 border-blue-800 text-blue-800 font-bold py-3 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fas fa-arrow-left"></i> KEMBALI
+                    </button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
